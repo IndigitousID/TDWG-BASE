@@ -27,9 +27,11 @@ Route::post('reset-password', 	'LoginController@resetPassword');
 Route::middleware(['auth:api'])->group(function() {
 	Route::prefix('saya')->group(function () {
 		Route::get('', 					'MeController@me');
+		Route::get('notifikasi',		'MeController@notifikasi');
+		Route::post('notifikasi',		'MeController@baca_notifikasi');
 		
-		/*----------  CONTENT  ----------*/
-		Route::get('direktori',			'MeController@direktori');
+		/*----------  SETTING  ----------*/
+		Route::apiResource('preferensi','PreferenceController');
 		
 		Route::post('change-password', 	'MeController@change_password');
 		Route::post('logout',			'LoginController@logout');
