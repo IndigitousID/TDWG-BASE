@@ -24,7 +24,7 @@ Route::post('login', 			'LoginController@login');
 Route::post('forget-password', 	'LoginController@forgetpassword');
 Route::post('reset-password', 	'LoginController@resetPassword');
 
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::middleware(['auth:api'])->group(function() {
 	Route::prefix('saya')->group(function () {
 		Route::get('', 					'MeController@me');
 		

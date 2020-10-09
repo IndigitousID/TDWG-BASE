@@ -78,8 +78,12 @@ class LoginController extends Controller
             // Create Token
             if (Auth::user() && $request->input('device_name'))
             {
-                $token = Auth::user()->createToken($request->input('device_name') . '-' . $request->fingerprint())->plainTextToken;
+                $token = Str::random(60);
+                Auth::user()->forceFill([
+                    'api_token' => hash('sha256', $token),
+                ])->save();
             }
+
 
             return response()->json([
                 'status' => true,
@@ -101,7 +105,7 @@ class LoginController extends Controller
     public function logout()
     {
         $user = Auth::user();
-        if ($user) $user->tokens()->delete();
+        if ($user) Auth::user()->forceFill(['api_token' => null])->save();
 
         return response()->json([
             'status'    => true,
