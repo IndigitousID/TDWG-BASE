@@ -141,14 +141,14 @@ class Resource extends Model
 
     public function scopePublished($q, Bool $v = true)
     {
-    	if ($v)
-    	{
-	        return $q->where(fn($q) => $q->whereNotNull('published_at')->where('published_at', "<", now()));
-    	}
-    	else
-    	{
-	        return $q->where(fn($q) => $q->whereNull('published_at')->orwhere('published_at', ">=", now()));
-    	}
+        if ($v)
+        {
+            return $q->where(function($q){ $q->whereNotNull('published_at')->where('published_at', "<", now());} );
+        }
+        else
+        {
+            return $q->where(function($q){ $q->whereNull('published_at')->orwhere('published_at', ">=", now());} );
+        }
     }
 
     public function scopeUserId($q, String $v)
