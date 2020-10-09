@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateResourceTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('resources', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->biginteger('user_id')->index();
+            $table->string('judul', 255);
+            $table->string('direktori', 255);
+            $table->string('subdirektori', 255);
+            $table->text('konten')->nullable();
+            $table->text('media_tipe')->nullable();
+            $table->text('media_url')->nullable();
+            $table->datetime('published_at')->nullable()->index();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('resources');
+    }
+}
