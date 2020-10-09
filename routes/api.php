@@ -25,10 +25,21 @@ Route::post('forget-password', 	'LoginController@forgetpassword');
 Route::post('reset-password', 	'LoginController@resetPassword');
 
 Route::middleware(['auth:sanctum'])->group(function() {
-	Route::prefix('me')->group(function () {
+	Route::prefix('saya')->group(function () {
 		Route::get('', 					'MeController@me');
+		
+		/*----------  CONTENT  ----------*/
+		Route::get('direktori',			'MeController@direktori');
+		
 		Route::post('change-password', 	'MeController@change_password');
 		Route::post('logout',			'LoginController@logout');
+	});
+
+	/*----------  CONFIG  ----------*/
+	Route::prefix('pengaturan')->group(function () {
+		Route::get('direktori', 	'ConfigController@direktori');
+		Route::get('subdirektori', 	'ConfigController@subdirektori');
+		Route::get('resource', 		'ConfigController@resource');
 	});
 });
 
