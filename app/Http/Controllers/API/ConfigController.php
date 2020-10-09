@@ -70,7 +70,7 @@ class ConfigController extends Controller
         request()->merge(['published' => true]);
 
         /*----------  Process  ----------*/
-        $resource  = Resource::filter(array_filter(request()->input(), static fn($var) => !is_null($var) ))->paginate(request()->has('per_page') ? request()->get('per_page') : 15);
+        $resource  = Resource::filter(array_filter(request()->input()))->paginate(request()->has('per_page') ? request()->get('per_page') : 15);
 
         return response()->json([
             'status' => true,
