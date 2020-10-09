@@ -78,4 +78,22 @@ class ConfigController extends Controller
             'message'=> 'Resource Berhasil Diambil',
         ]);
     }
+
+    /**
+     * Get Resource
+     * @authenticated
+     */
+    public function resource_show($id)
+    {
+        request()->merge(['published' => true]);
+
+        /*----------  Process  ----------*/
+        $resource  = Resource::filter(array_filter(request()->input()))->where('id', $id)->firstorfail();
+
+        return response()->json([
+            'status' => true,
+            'data'   => $resource,
+            'message'=> 'Resource Berhasil Diambil',
+        ]);
+    }
 }

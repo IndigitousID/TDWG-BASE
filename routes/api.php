@@ -40,6 +40,7 @@ Route::middleware(['auth:api'])->group(function() {
 		Route::get('direktori', 	'ConfigController@direktori');
 		Route::get('subdirektori', 	'ConfigController@subdirektori');
 		Route::get('resource', 		'ConfigController@resource');
+		Route::get('resource/{id}',	'ConfigController@resource_show');
 	});
 });
 
