@@ -25,6 +25,29 @@ use Illuminate\Http\Request;
 class ConfigController extends Controller
 {
     /**
+     * Get beranda
+     * @authenticated
+     */
+    public function beranda()
+    {
+        $config = Storage::get('config/direktori.json');
+        $home   = [];
+
+        foreach ($config as $c) {
+            $home[]     = [
+                'direktori' => $c, 
+                'data'      => Resource::where('direktori', $c)->orderby('published_at', 'desc')->skip(0)->take(4)->get()
+            ];
+        }
+
+        return response()->json([
+            'status' => true,
+            'data'   => $home ? json_decode($home) : [],
+            'message'=> 'Beranda Berhasil Diambil',
+        ]);
+    }
+
+    /**
      * Get Direktori
      * @authenticated
      */
