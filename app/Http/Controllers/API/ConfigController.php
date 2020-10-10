@@ -30,7 +30,7 @@ class ConfigController extends Controller
      */
     public function beranda()
     {
-        $config = Storage::get('config/direktori.json');
+        $config = json_decode(Storage::get('config/direktori.json'), true);
         $home   = [];
 
         foreach ($config as $c) {
@@ -42,7 +42,7 @@ class ConfigController extends Controller
 
         return response()->json([
             'status' => true,
-            'data'   => $home ? json_decode($home) : [],
+            'data'   => $home,
             'message'=> 'Beranda Berhasil Diambil',
         ]);
     }
