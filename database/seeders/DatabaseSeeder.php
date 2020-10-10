@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
 							'direktori' => $all_row['direktori'],
 							'subdirektori'	=> $all_row['subdirektori'],
 							'konten'		=> $all_row['konten'],
+							'thumbnail'		=> 'https://lorempixel.com/640/480/?57050',
 							'media_tipe'	=> $all_row['media_tipe'],
 							'media_url' 	=> $all_row['media_url'],
 							'published_at'	=> now()

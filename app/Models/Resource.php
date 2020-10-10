@@ -21,6 +21,7 @@ class Resource extends Model
         'konten',
         'direktori',
         'subdirektori',
+        'thumbnail',
         'media_tipe',
         'media_url',
     ];
@@ -77,6 +78,7 @@ class Resource extends Model
         $rules['judul']              = ['required', 'string', 'max:255'];
         $rules['direktori']          = ['required', 'string', 'max:255'];
         $rules['konten']             = ['required', 'string'];
+        $rules['thumbnail']          = ['required', 'string'];
         $rules['media_tipe']         = ['required', 'in:other,image,audio,video'];
         $rules['media_url']          = ['required', 'string'];
         $rules['published_at']       = ['nullable', 'date'];

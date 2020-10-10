@@ -20,6 +20,7 @@ class CreateResourceTable extends Migration
             $table->string('direktori', 255);
             $table->string('subdirektori', 255);
             $table->text('konten')->nullable();
+            $table->text('thumbnail')->nullable();
             $table->text('media_tipe')->nullable();
             $table->text('media_url')->nullable();
             $table->datetime('published_at')->nullable()->index();
